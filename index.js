@@ -23,7 +23,12 @@ dotenv.config();
 const API_KEY = 'pub_69919892f87f86c7d48e31dfb61e8e91e0f3b'
 const app = express();
 const PORT = process.env.PORT || 5050;
-app.use(cors());
+// Configure CORS to allow requests from any origin
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(bodyParser.json());
 // Get a list of 50 posts
